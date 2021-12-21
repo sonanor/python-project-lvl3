@@ -1,0 +1,7 @@
+.idea
+.venv
+.pytest_cache
+dist
+.coverage
+/coverage.xml
+/poetry.lock
