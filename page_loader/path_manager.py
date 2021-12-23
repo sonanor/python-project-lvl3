@@ -11,10 +11,12 @@ def create_html_filepath(url: str, directory: str) -> str:
     return os.path.join(directory, formatted_path)
 
 
-def create_image_path(image_url: str, page_url: str, directory: str) -> str:
-    """Генерирует путь к файлу-изображению на диске."""
-    base_url = get_slugify_string(urlparse(page_url).netloc, '_files')
-    image_basename = get_url_without_extention(urlparse(image_url).path)
-    image_ext = get_url_extention(image_url)
-    image_path = get_slugify_string(image_basename, f'.{image_ext}')
-    return os.path.join(directory, base_url, image_path)
+def create_source_path(file_url: str, page_url: str, directory: str) -> str:
+    """Генерирует путь к файлу из html на диске."""
+    if file_url == page_url:
+        return get_slugify_string(get_url_without_scheme(page_url))
+    base_url = get_slugify_string(get_url_without_scheme(page_url), '_files')  # ru-hexlet-io-courses_files
+    file_basename = get_url_without_extention(get_url_without_scheme(file_url))  # lessons.png
+    file_ext = get_url_extention(file_url)
+    file_path = get_slugify_string(file_basename, f'.{file_ext}')
+    return os.path.join(directory, base_url, file_path)
