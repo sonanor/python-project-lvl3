@@ -11,7 +11,7 @@ page-loader:
 	poetry run page-loader
 
 package-install:
-	python3 -m pip install --user dist/*.whl --force-reinstall
+	python3 -m pip install dist/*.whl --force-reinstall
 
 lint:
 	poetry run flake8 page_loader tests

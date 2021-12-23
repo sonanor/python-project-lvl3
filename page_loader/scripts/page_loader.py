@@ -1,18 +1,12 @@
-from page_loader.downloader import download
+from page_loader.downloader import download_page
+from page_loader.path_manager import create_html_filepath
+from page_loader.cli import get_args
 
 
 def main():
-    import argparse
-    import os
-
-    parser = argparse.ArgumentParser(description='Page-loader')
-    parser.add_argument('-o', '--output', dest='output')
-    parser.add_argument('url', type=str)
-    args = parser.parse_args()
-    if not args.output:
-        args.output = os.getcwd()
-    result_path = download(args.output, args.url)
-    return result_path
+    args = get_args()
+    html_path = download_page(args.output, args.url)
+    return html_path
 
 
 if __name__ == '__main__':
