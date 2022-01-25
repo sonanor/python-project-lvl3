@@ -1,24 +1,8 @@
 import re
-from typing import Any
 from urllib.parse import urljoin, urlparse
 
-from bs4 import BeautifulSoup
-
-
-# def is_valid_image_url(url: str) -> bool:
-#     return url.endswith('.png') or url.endswith('.jpg')
-
-
-# def get_image_urls(url: str, soup: BeautifulSoup) -> list[str]:
-#     images_list = []
-#     for img in soup.find_all('img'):
-#         img_url = img.attrs.get('src')
-#         if not img_url:
-#             continue
-#         img_url = urljoin(url, img_url)
-#         if is_valid_url(img_url) and is_valid_image_url(img_url):
-#             images_list.append(img_url)
-#     return images_list
+import validators
+from validators import ValidationFailure
 
 
 def create_absolute_url(domain: str, source_urls: list) -> list:
@@ -44,11 +28,13 @@ def refer_to_hostname(url: str, source_url) -> bool:
 
 
 def is_valid_url(url):
-    """
-    Checks whether `url` is a valid URL.
-    """
-    parsed = urlparse(url)
-    return bool(parsed.netloc) and bool(parsed.scheme)
+    return validators.url(url) is True
+
+
+def test_is_valid_url():
+    url = 'http://endm'
+    # raise ValueError
+    assert is_valid_url(url) is False
 
 
 def get_url_extention(url: str) -> str:

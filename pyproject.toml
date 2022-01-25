@@ -12,6 +12,7 @@ python = "^3.9"
 requests = "^2.26.0"
 requests-mock = "^1.9.3"
 bs4 = "^0.0.1"
+validators = "^0.18.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

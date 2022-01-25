@@ -1,5 +1,4 @@
 import os
-from urllib.parse import urlparse
 
 from page_loader.helpers import get_url_extention, get_url_without_extention, get_url_without_scheme, get_slugify_string
 

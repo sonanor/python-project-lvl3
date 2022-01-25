@@ -1,6 +1,8 @@
-from page_loader.downloader import download_page
-from page_loader.path_manager import create_html_filepath
 from page_loader.cli import get_args
+from page_loader.downloader import download_page
+from page_loader.logging import configure_logger
+
+configure_logger()
 
 
 def main():

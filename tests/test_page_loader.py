@@ -1,6 +1,7 @@
 from tempfile import TemporaryDirectory
 
-from page_loader.downloader import download_page, download_additional_sources
+from page_loader.downloader import download_page
+from page_loader.resources_download import download_additional_sources
 
 
 def test_download(requests_mock):
